@@ -1,3 +1,3 @@
 <?php 
-echo "gonorrea ome";
+echo "gonorrea ome 2 a buena perro";
 ?>
