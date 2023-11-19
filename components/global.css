@@ -1,0 +1,13 @@
+@import url("../styles/admin.css");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500&display=swap');
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+*{
+    font-family: 'Raleway', sans-serif;
+}

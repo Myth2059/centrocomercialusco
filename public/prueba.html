@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Desplegable con Submenús</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+
+        li:hover > ul {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>
+        <a href="#">Categoría 1</a>
+        <ul>
+            <li><a href="#">Subcategoría 1.1</a></li>
+            <li><a href="#">Subcategoría 1.2</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">Categoría 2</a>
+        <ul>
+            <li><a href="#">Subcategoría 2.1</a></li>
+            <li><a href="#">Subcategoría 2.2</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">Categoría 3</a>
+        <ul>
+            <li><a href="#">Subcategoría 3.1</a></li>
+            <li><a href="#">Subcategoría 3.2</a></li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

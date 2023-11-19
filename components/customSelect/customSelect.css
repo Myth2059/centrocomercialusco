@@ -1,0 +1,87 @@
+.containerCustomSelect{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: flex-end;
+}
+.mainSelection{
+    width: 8rem;
+    font-weight: 500;
+    align-self: center;
+    margin-top: 10px;
+    top: 100%;
+    position: absolute;
+    display: none;
+    z-index: 10;
+    
+}
+.arrow{
+    rotate: 45deg;
+    background-color:#f5f5f5 ;
+    width: 16px;
+    height: 16px;
+    z-index: 0;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    position: absolute;
+}
+.firstCategory{
+    position: relative;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+}
+.firstCategory:hover{
+    background-color:#a7a7a7 ;
+}
+
+.firstCategory:hover .overlayDiv{
+    display: flex;
+    flex-direction: column;
+    
+}
+.overlayDiv{
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: whitesmoke;
+    width: max-content;
+    display: none;
+   padding: 4px;
+   z-index: 10;
+}
+
+.overlayDiv span{
+    flex-grow: 1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    
+}
+.overlayDiv span:hover{
+    background-color:#a7a7a7 ;
+}
+
+
+
+.mainSelection span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+   
+}
+.selection{
+    width: 100%;
+}
+#tipoLocal{
+    border-radius: 4px;
+    border: 1px solid #00000059;
+    padding: 4px 4px;
+    width: 200px;
+    margin-top: 2px;
+}

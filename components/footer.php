@@ -1,3 +1,3 @@
-<div>
-    footer
-</div>
+<footer>
+    Hola soy un footer
+</footer>
