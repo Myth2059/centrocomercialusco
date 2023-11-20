@@ -1,0 +1,97 @@
+.localContainer{
+    width: 555px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 24px;
+}
+
+.localContainer h2{
+    text-align: center;
+}
+
+.localDataProp{
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+
+}
+.localDataProp button{
+    margin-top: 16px;
+    width: fit-content;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.474);
+    border-radius: 6px;
+    height: 28px;
+    display: none;
+
+}
+
+.localDataProp h3{
+    margin: 0;
+}
+.localDataProp p {
+    margin: 0;
+    color: green;
+}
+.input2{
+    display: flex;
+    flex-direction: column;
+    max-width: 120px;
+
+}
+.formPropietario{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    
+}
+.formLocal{
+    display: flex;
+    gap: 16px;    
+    flex-wrap: wrap;
+}
+
+.localDataProp input:disabled{
+    border-color: white !important;
+}
+.localDataProp i{
+    --ggs:0.8;
+    transform: rotate(-45deg) scale(var(--ggs,1))translate(-3px, 6px) !important;
+}
+.updateSection{
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+.updateSection:hover i{
+    color: blueviolet;
+}
+.localContainer hr{
+    margin: 16px 0px;
+}
+.formLocal select{
+    height: 26px;
+   background: none;
+}
+.formLocal select:disabled{
+    color: black;
+    background-color: #efefef4d;
+    border-color: white !important;
+    
+
+}
+.estadoContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

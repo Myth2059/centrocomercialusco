@@ -1,8 +1,6 @@
 <?php 
 session_start();
-
-$_SESSION['rol'] = "Administrado";
-if ($_SESSION['rol'] !== "Administrador") {
+if ($_SESSION['usuario_rol'] !== "Administrador") {
     header("Location: ..\public\index.php");
     exit;
 }

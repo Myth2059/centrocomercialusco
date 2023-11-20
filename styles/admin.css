@@ -113,7 +113,7 @@ select{
     flex-direction: column;
     gap: 2px !important;
 }
-#errorP{
+#errorP,#errorL{
     text-align: center;
     color: red;
     font-weight: 500;

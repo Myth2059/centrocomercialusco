@@ -1,6 +1,6 @@
 <div class="registerLocalForm registerForm">
     <h2>Registrar Local</h2>
-
+    <p id="errorL">&nbsp</p>
     <form action="">
         <h3>Datos Basicos</h3>
         <div>
@@ -18,6 +18,7 @@
             <?php include "..\components\customSelect\customSelect.html" ?>
             <?php echo customInput("Imagen url", "imgUrl", "text"); ?>
         </div>
+        <button type="button" onclick="registerLocal()">Enviar</button>
     </form>
-
+    <script src="..\lib\admin\registerLocal.js"></script>
 </div>

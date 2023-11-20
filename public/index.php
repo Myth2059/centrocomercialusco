@@ -1,3 +1,4 @@
 <?php 
-echo "gonorrea ome 2 a buena perro";
-?>
+echo "alguna pagina de rellero";
+?> 
+<a href="..\public\login.php"><h2>Login</h2></a>

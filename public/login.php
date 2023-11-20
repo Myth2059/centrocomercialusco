@@ -76,10 +76,10 @@
 
 <div class="login-container">
     <h2>Iniciar Sesión</h2>
-    <form class="login-form">
+    <form action="..\lib\login\loginValidation.php" method="post" class="login-form">
         <div class="form-group">
             <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="usuario" required>
         </div>
         <div class="form-group">
             <label for="password">Contraseña:</label>
