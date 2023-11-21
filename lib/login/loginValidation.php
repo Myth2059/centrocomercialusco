@@ -18,17 +18,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
+   
     if ($usuario && password_verify($password, $usuario['contraseña'])) {
         // Login exitoso
         $_SESSION['usuario_cedula'] = $usuario['cedula'];
         $_SESSION['usuario_rol'] = $usuario['rol'];
 
+        
+
         header("Location: ..\..\public\locales.php"); // Redirigir a la página de inicio después del login
         exit();
     } else {
         // Usuario no encontrado o contraseña incorrecta
-        echo "Usuario o contraseña incorrectos";
+        echo "Usuario o Contraseña invalidos  <a href = '..\..\public\login'>Volver</a>";
     }
 }
 ?>

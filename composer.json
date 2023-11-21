@@ -1,0 +1,17 @@
+{
+    "name": "myth/centrocomercialusco",
+    "autoload": {
+        "psr-4": {
+            "Myth\\Centrocomercialusco\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael",
+            "email": "104277342+Myth2059@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "8.1.3"
+    }
+}

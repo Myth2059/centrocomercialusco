@@ -3,8 +3,8 @@
 <?php
 
 function cardContainer($id,$title,$ubicacion,$tel,$categoria,$subCategoria,$imgUrl) {
-    $mostrarFooter = isset($_SESSION['usuario_rol']) && $_SESSION['usuario_rol'] == "Administrador";
-  
+    $mostrarFooter = isset($_SESSION['usuario_rol']) && $_SESSION['usuario_rol'] == "Administrador";  
+   
     $html = '<div id="'.$id.'" class="cardContainer">
                 <div class="titleCard"> <span>'.$title.'</span></div>
                 <div onclick="goToLocal('.$id.')" class="imgCard">
@@ -32,6 +32,3 @@ function cardContainer($id,$title,$ubicacion,$tel,$categoria,$subCategoria,$imgU
 }
 
 ?>
-<div onclick="goToLocal()">
-
-</div>

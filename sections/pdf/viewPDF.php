@@ -1,33 +1,5 @@
 <?php
-include '..\fpdf\fpdf.php';
-
-class PDF extends FPDF {
-    function Header() {
-        
-        $this->SetFont('Arial', 'B', 12);
-        $this->Cell(30, 10, 'ID', 1);
-        $this->Cell(40, 10, 'Nombre', 1);
-        $this->Cell(40, 10, 'Ubicacion', 1);
-        $this->Cell(40, 10, 'Estado', 1);
-        $this->Cell(40, 10, 'Categoria', 1);
-        $this->Cell(40, 10, 'Subcategoria', 1);
-        $this->Cell(40, 10, 'Propietario', 1);
-        $this->Cell(40, 10, 'Telefono', 1);
-        $this->Cell(40, 10, 'Cedula', 1);
-        $this->Ln(); 
-    }
-
-    function Footer() {
-        // Pie de página
-        $this->SetY(-15);
-        $this->SetFont('Arial', 'I', 8);
-        $this->Cell(0, 10, 'Página ' . $this->PageNo(), 0, 0, 'C');
-    }
-}
-
-// Crear instancia de PDF
-$pdf = new PDF();
-$pdf->AddPage();
+require_once '..\vendor\autoload.php';
 
 // Conectar a la base de datos (reemplaza con tus propios datos de conexión)
 $host = '127.0.0.1';
@@ -36,32 +8,73 @@ $usuario_bd = 'root';
 $contraseña_bd = '';
 
 try {
-   
+
     $pdo = new PDO("mysql:host=$host;dbname=$nombre_bd;charset=utf8", $usuario_bd, $contraseña_bd);
     // Establecer el modo de error de PDO en excepción
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Consultar datos desde la base de datos (reemplaza con tu propia consulta)
     $sql = "SELECT locales.id,locales.nombre,locales.ubicacion,locales.estado,locales.categoria,locales.subcategoria, CONCAT(usuarios.nombre, ' ',usuarios.apellido) AS propietario, usuarios.telefono, usuarios.cedula FROM centrocomercial.locales inner join centrocomercial.usuarios on locales.usuarios_Cedula = usuarios.cedula;";
-    $result = $pdo->query($sql);
-echo print_r($result);
+    $result = $pdo->query($sql);   
     // Agregar filas al PDF
     if ($result->rowCount() > 0) {
-        $pdf->SetFont('Arial', '', 12);
+        $html = '<div>
+        <style>
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+        
+                th, td {
+                    border: 1px solid #dddddd;
+                    text-align: center;
+                    padding: 8px;
+                }
+        
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+        
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>UBICACIÓN</th>
+                <th>ESTADO</th>
+                <th>CATEGORIA</th>
+                <th>SUBCATEGORIA</th>
+                <th>PROPIETARIO</th>
+                <th>TELEFONO</th>
+                <th>CEDULA</th>
+            </tr>
+            </thead>
+            <tbody>';
+
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $pdf->Cell(30, 10, $row["id"], 1);
-            $pdf->Cell(40, 10, $row["nombre"], 1);
-            $pdf->Cell(40, 10, $row["ubicacion"], 1);
-            $pdf->Cell(40, 10, $row["estado"], 1);
-            $pdf->Cell(40, 10, $row["categoria"], 1);
-            $pdf->Cell(40, 10, $row["subcategoria"], 1);
-            $pdf->Cell(40, 10, $row["propietario"], 1);
-            $pdf->Cell(40, 10, $row["teledono"], 1);
-            $pdf->Cell(40, 10, $row["cedula"], 1);
-            $pdf->Ln(); // Salto de línea
-        }
+            $html .= '<tr>
+                    <td>' . $row['id'] . '</td>
+                    <td>' . $row['nombre'] . '</td>
+                    <td>' . $row['ubicacion'] . '</td>
+                    <td>' . $row['estado'] . '</td>
+                    <td>' . $row['categoria'] . '</td>
+                    <td>' . $row['subcategoria'] . '</td>
+                    <td>' . $row['propietario'] . '</td>
+                    <td>' . $row['telefono'] . '</td>
+                    <td>' . $row['cedula'] . '</td>
+                </tr>';
+        };
+        $html .= '</tbody>
+             </table>
+        </div>';
+        $mpdf = new \Mpdf\Mpdf();
+         $mpdf->WriteHTML($html);
+        ob_clean(); 
+         $mpdf->Output();  
     } else {
-        $pdf->Cell(0, 10, 'No hay datos disponibles', 1, 0, 'C');
+        echo  "no hay nada";
     }
 } catch (PDOException $e) {
     echo "Error de conexión: " . $e->getMessage();
@@ -70,8 +83,57 @@ echo print_r($result);
 // Cerrar conexión a la base de datos
 $pdo = null;
 
-// Encabezado para indicar que se trata de un PDF
-header('Content-Type: application/pdf');
-// Salida del contenido del PDF al navegador
-echo $pdf->Output();
+// // Encabezado para indicar que se trata de un PDF
+// header('Content-Type: application/pdf');
+// // Salida del contenido del PDF al navegador
+// echo $pdf->Output('s');
 ?>
+<!-- <div>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>UBICACIÓN</th>
+                <th>ESTADO</th>
+                <th>CATEGORIA</th>
+                <th>SUBCATEGORIA</th>
+                <th>PROPIETARIO</th>
+                <th>TELEFONO</th>
+                <th>CEDULA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>E</td>
+                <td>F</td>
+                <td>G</td>
+                <td>H</td>
+                <td>I</td>
+                <td>J</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
